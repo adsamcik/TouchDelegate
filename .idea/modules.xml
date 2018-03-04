@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TouchArea.iml" filepath="$PROJECT_DIR$/TouchArea.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TouchDelegate.iml" filepath="$PROJECT_DIR$/TouchDelegate.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/touchdelegate/touchdelegate.iml" filepath="$PROJECT_DIR$/touchdelegate/touchdelegate.iml" />
     </modules>
