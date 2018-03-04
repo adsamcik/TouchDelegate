@@ -13,3 +13,5 @@ Following code automatically adds touch delegate composite to parent view and ad
 
 # Screenshot
 ![Screenshot of the example](https://raw.githubusercontent.com/adsamcik/TouchDelegate/master/screenshots/01.png)
+
+Blue area shows the standard button bounds. Pink area shows extended touch area.
