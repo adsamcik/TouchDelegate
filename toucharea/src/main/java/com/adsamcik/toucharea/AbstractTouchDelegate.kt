@@ -1,4 +1,4 @@
-package com.adsamcik.draggable.delegates
+package com.adsamcik.toucharea
 
 import android.view.MotionEvent
 import android.view.View
@@ -8,7 +8,7 @@ import android.view.View
  * This class allows for better overloading of TouchDelegate for TouchDelegateComposite
  * without the need for unnecessary payload that TouchDelegate brings
  */
-internal abstract class AbstractTouchDelegate {
+abstract class AbstractTouchDelegate {
     /**
      * View that is needed for sorting purposes
      */

@@ -1,12 +1,25 @@
 package com.adsamcik.touchareatest
 
-import android.support.v7.app.AppCompatActivity
+import android.graphics.Rect
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
+import android.support.v7.app.AppCompatActivity
+import com.adsamcik.toucharea.DraggableTouchDelegate
+import com.adsamcik.toucharea.TouchDelegateComposite
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
+    private fun Int.dpToPx() = (this * resources.displayMetrics.density).roundToInt()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val rect = Rect(64.dpToPx(), 32.dpToPx(), 0, 32.dpToPx())
+        TouchDelegateComposite.addTouchDelegate(DraggableTouchDelegate(rect, extended_button))
+        val dialog = AlertDialog.Builder(this).setMessage("Clicked").create()
+        extended_button.setOnClickListener {
+            dialog.show()
+        }
     }
 }

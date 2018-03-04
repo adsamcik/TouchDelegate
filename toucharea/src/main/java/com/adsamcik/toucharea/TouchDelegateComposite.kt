@@ -1,4 +1,4 @@
-package com.adsamcik.draggable.delegates
+package com.adsamcik.toucharea
 
 import android.graphics.Rect
 import android.view.MotionEvent
@@ -10,7 +10,7 @@ import java.util.*
  * Touch delegate composite is a implementation of TouchDelegate
  * that allows multiple TouchDelegates per view
  */
-internal class TouchDelegateComposite(view: View) : TouchDelegate(emptyRect, view) {
+class TouchDelegateComposite(view: View) : TouchDelegate(emptyRect, view) {
     private val delegates = ArrayList<AbstractTouchDelegate>()
     val count: Int get() = delegates.size
 
@@ -64,6 +64,20 @@ internal class TouchDelegateComposite(view: View) : TouchDelegate(emptyRect, vie
         }
 
         /**
+         * Automatically adds touch delegate to view
+         *
+         * If touch delegate already exists and is not TouchDelegateComposite it will be
+         * replaced with TouchDelegateComposite and added to it so it will still be called
+         * Unfortunately there is no way to determine the view it handles so passed view's
+         * Z translation will be used for sorting
+         */
+        fun addTouchDelegate(delegate: AbstractTouchDelegate): TouchDelegateComposite {
+            val composite = addTouchDelegateOn(delegate.view.parent as View)
+            composite.addDelegate(delegate)
+            return composite
+        }
+
+        /**
          * Automatically creates TouchDelegateComposite on the view
          *
          * If touch delegate already exists and is not TouchDelegateComposite it will be
@@ -78,7 +92,7 @@ internal class TouchDelegateComposite(view: View) : TouchDelegate(emptyRect, vie
 
             val composite = TouchDelegateComposite(view)
             if (delegate != null)
-                composite.addDelegate(WrapperTouchDelegate(view, delegate))
+                composite.addDelegate(WrapperTouchDelegate(delegate, view))
 
             view.touchDelegate = composite
             return composite

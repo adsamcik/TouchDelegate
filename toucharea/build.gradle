@@ -1,16 +1,23 @@
+plugins {
+    id "com.jfrog.bintray" version "1.8.0"
+    id "com.github.dcendents.android-maven" version "2.0"
+}
+
+apply plugin: 'maven-publish'
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.dokka'
+
+ext.version = '1.0.0'
 
 android {
     compileSdkVersion 27
-
-
 
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
-        versionName "1.0"
+        versionName "$version"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -25,6 +32,11 @@ android {
 
 }
 
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/javadoc"
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -36,4 +48,35 @@ dependencies {
 }
 repositories {
     mavenCentral()
+}
+
+ext {
+    bintrayRepo = 'android-components'
+    bintrayName = 'touchdelegate'
+
+    publishedGroupId = 'com.adsamcik.android-components'
+    libraryName = 'touchdelegate'
+    artifact = 'touchdelegate'
+
+    libraryDescription = 'TouchArea library allows extension of touch area using TouchDelegate while allowing multiple views in parent to be handled this way. It also includes DraggableTouchDelegate which allows touch delegate to handle translation properly.'
+
+    siteUrl = 'https://github.com/adsamcik/TouchArea'
+    gitUrl = 'https://github.com/adsamcik/TouchArea.git'
+
+    libraryVersion = "$version"
+
+    developerId = 'adsamcik'
+    developerName = ''
+    developerEmail = ''
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+//gradlew bintrayUpload
+
+if (file('../local.properties').exists()) {
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+    apply from: 'https://gist.githubusercontent.com/adsamcik/81084e03dd0190772fd32b90136da34e/raw/e8007b585e57a8dfa25ca5446acf1f65c6448373/bintrayv2.gradle'
 }

@@ -1,10 +1,13 @@
-package com.adsamcik.draggable.delegates
+package com.adsamcik.toucharea
 
 import android.graphics.Rect
 import android.view.MotionEvent
 import android.view.View
 
-internal class DraggableTouchDelegate(private val mOffsetRect: Rect, override val view: View) : AbstractTouchDelegate() {
+/**
+ * Touch delegate that can handle dragging/translation
+ */
+class DraggableTouchDelegate(private val mOffsetRect: Rect, override val view: View) : AbstractTouchDelegate() {
     private val mHitRect = Rect()
     private var mDelegateTargeted = false
 
@@ -42,7 +45,6 @@ internal class DraggableTouchDelegate(private val mOffsetRect: Rect, override va
      * Called when touch event occurs
      */
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        updateHitRect()
         var sendToDelegate = false
         when (event.action) {
             MotionEvent.ACTION_UP -> {
@@ -52,6 +54,7 @@ internal class DraggableTouchDelegate(private val mOffsetRect: Rect, override va
                 }
             }
             MotionEvent.ACTION_DOWN -> {
+                updateHitRect()
                 if (mHitRect.contains(event.x.toInt(), event.y.toInt())) {
                     mDelegateTargeted = true
                     sendToDelegate = true
