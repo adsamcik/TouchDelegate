@@ -1,4 +1,4 @@
-package com.adsamcik.toucharea
+package com.adsamcik.touchdelegate
 
 import android.graphics.Rect
 import android.view.MotionEvent

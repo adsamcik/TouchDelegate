@@ -4,8 +4,8 @@ import android.graphics.Rect
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import com.adsamcik.toucharea.DraggableTouchDelegate
-import com.adsamcik.toucharea.TouchDelegateComposite
+import com.adsamcik.touchdelegate.DraggableTouchDelegate
+import com.adsamcik.touchdelegate.TouchDelegateComposite
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.math.roundToInt
 

@@ -58,10 +58,10 @@ ext {
     libraryName = 'touchdelegate'
     artifact = 'touchdelegate'
 
-    libraryDescription = 'TouchArea library allows extension of touch area using TouchDelegate while allowing multiple views in parent to be handled this way. It also includes DraggableTouchDelegate which allows touch delegate to handle translation properly.'
+    libraryDescription = 'TouchDelegate library allows extension of touch area using Android\'s built in TouchDelegate while overcoming single touch delegate restriction and solving issues with translation.'
 
-    siteUrl = 'https://github.com/adsamcik/TouchArea'
-    gitUrl = 'https://github.com/adsamcik/TouchArea.git'
+    siteUrl = 'https://github.com/adsamcik/TouchDelegate'
+    gitUrl = 'https://github.com/adsamcik/TouchDelegate.git'
 
     libraryVersion = "$version"
 
