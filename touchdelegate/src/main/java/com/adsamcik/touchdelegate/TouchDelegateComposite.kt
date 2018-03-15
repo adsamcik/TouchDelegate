@@ -54,6 +54,9 @@ class TouchDelegateComposite(view: View, val mCheckVisibility: Boolean = true) :
         return false
     }
 
+    /**
+     * Checks visibility of the delegate
+     */
     private fun checkVisibilityOf(touchDelegate: AbstractTouchDelegate): Boolean {
         val rect = Rect()
         touchDelegate.view.getGlobalVisibleRect(rect)
