@@ -12,7 +12,7 @@ import java.util.*
  */
 class TouchDelegateComposite(view: View) : TouchDelegate(emptyRect, view) {
     private val delegates = ArrayList<AbstractTouchDelegate>()
-    private val mScreenSize = view.context.resources.displayMetrics.getScreenSize()
+    private val mScreenSize = view.context.resources.displayMetrics.getScreenBounds()
 
     /**
      * Number of delegates
@@ -67,7 +67,7 @@ class TouchDelegateComposite(view: View) : TouchDelegate(emptyRect, view) {
          * Z translation will be used for sorting
          */
         fun addTouchDelegateOn(view: View, delegate: AbstractTouchDelegate): TouchDelegateComposite {
-            val composite = addTouchDelegateOn(view)
+            val composite = setTouchDelegateCompositeOn(view)
             composite.addDelegate(delegate)
             return composite
         }
@@ -81,7 +81,7 @@ class TouchDelegateComposite(view: View) : TouchDelegate(emptyRect, view) {
          * Z translation will be used for sorting
          */
         fun addTouchDelegate(delegate: AbstractTouchDelegate): TouchDelegateComposite {
-            val composite = addTouchDelegateOn(delegate.view.parent as View)
+            val composite = setTouchDelegateCompositeOn(delegate.view.parent as View)
             composite.addDelegate(delegate)
             return composite
         }
@@ -93,7 +93,7 @@ class TouchDelegateComposite(view: View) : TouchDelegate(emptyRect, view) {
          * replaced with TouchDelegateComposite and added to it so it will still be called
          * Unfortunately there is no way to determine the view it focuses on so it will parent view for sorting
          */
-        fun addTouchDelegateOn(view: View): TouchDelegateComposite {
+        fun setTouchDelegateCompositeOn(view: View): TouchDelegateComposite {
             val delegate = view.touchDelegate
 
             if (delegate is TouchDelegateComposite)

@@ -15,6 +15,11 @@ class DraggableTouchDelegate(private val mOffsetRect: Rect, override val view: V
      */
     private var mDelegateTargeted = false
 
+    /**
+     * Returns current hit rectangle
+     *
+     * Value is not cached
+     */
     private val hitRect: Rect
         get() {
             val tX = view.x.toInt()
