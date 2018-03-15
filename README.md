@@ -1,3 +1,5 @@
+ [ ![Download](https://api.bintray.com/packages/adsamcik/android-components/touchdelegate/images/download.svg) ](https://bintray.com/adsamcik/android-components/touchdelegate/_latestVersion)
+
 # TouchDelegate
 Touch delegate builds on Android's built in TouchDelegate. TouchDelegate has several limitations and issues. 
 For example you can't add more than one TouchDelegate to a parent, this can be quite an issue if you want to have 2 buttons with extended touch areas. There is also DraggableTouchDelegate which tries to solve some translation related issues with default TouchDelegate. 
