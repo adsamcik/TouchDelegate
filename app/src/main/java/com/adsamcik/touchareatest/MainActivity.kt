@@ -4,6 +4,7 @@ import android.graphics.Rect
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.view.MotionEvent
 import com.adsamcik.touchdelegate.DraggableTouchDelegate
 import com.adsamcik.touchdelegate.TouchDelegateComposite
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,6 +21,14 @@ class MainActivity : AppCompatActivity() {
         val dialog = AlertDialog.Builder(this).setMessage("Clicked").create()
         extended_button.setOnClickListener {
             dialog.show()
+        }
+
+        TouchDelegateComposite.addTouchDelegate(DraggableTouchDelegate(rect, obscured_view))
+        obscured_view.setOnClickListener {
+            dialog.show()
+        }
+
+        obscuring_view.setOnClickListener {
         }
     }
 }
