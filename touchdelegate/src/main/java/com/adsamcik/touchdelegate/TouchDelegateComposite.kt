@@ -12,8 +12,12 @@ import java.util.*
  */
 class TouchDelegateComposite(view: View) : TouchDelegate(emptyRect, view) {
     private val delegates = ArrayList<AbstractTouchDelegate>()
+    private val mScreenSize = view.context.resources.displayMetrics.getScreenSize()
+
+    /**
+     * Number of delegates
+     */
     val count: Int get() = delegates.size
-    val screenSize = view.context.resources.displayMetrics.getScreenSize()
 
     /**
      * Add delegate to the composite
@@ -41,7 +45,7 @@ class TouchDelegateComposite(view: View) : TouchDelegate(emptyRect, view) {
         delegates.forEach {
             val rect = Rect()
             it.view.getGlobalVisibleRect(rect)
-            if (screenSize.intersect(rect)) {
+            if (mScreenSize.intersect(rect)) {
                 event.setLocation(x, y)
                 if (it.onTouchEvent(event))
                     return true
