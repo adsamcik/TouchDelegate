@@ -17,3 +17,7 @@ Following code automatically adds touch delegate composite to parent view and ad
 ![Screenshot of the example](https://raw.githubusercontent.com/adsamcik/TouchDelegate/master/screenshots/01.png)
 
 Blue area shows the standard button bounds. Pink area shows extended touch area.
+
+# Known issues
+
+* Visibility check works only on extended touch area. Direct clicks need to be handled by setting onTouchListener on the obscuring view.
