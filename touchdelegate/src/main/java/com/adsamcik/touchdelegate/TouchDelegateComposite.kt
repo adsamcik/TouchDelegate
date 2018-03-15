@@ -10,8 +10,9 @@ import java.util.*
  * Touch delegate composite is a implementation of TouchDelegate
  * that allows multiple TouchDelegates per view
  */
-class TouchDelegateComposite(view: View) : TouchDelegate(emptyRect, view) {
+class TouchDelegateComposite(view: View, val mCheckVisibility: Boolean = true) : TouchDelegate(emptyRect, view) {
     private val delegates = ArrayList<AbstractTouchDelegate>()
+
     private val mScreenSize = view.context.resources.displayMetrics.getScreenBounds()
 
     /**
@@ -43,9 +44,7 @@ class TouchDelegateComposite(view: View) : TouchDelegate(emptyRect, view) {
 
         delegates.sortByDescending { it.view.translationZ }
         delegates.forEach {
-            val rect = Rect()
-            it.view.getGlobalVisibleRect(rect)
-            if (mScreenSize.intersect(rect)) {
+            if (!mCheckVisibility || checkVisibilityOf(it)) {
                 event.setLocation(x, y)
                 if (it.onTouchEvent(event))
                     return true
@@ -53,6 +52,12 @@ class TouchDelegateComposite(view: View) : TouchDelegate(emptyRect, view) {
         }
 
         return false
+    }
+
+    private fun checkVisibilityOf(touchDelegate: AbstractTouchDelegate): Boolean {
+        val rect = Rect()
+        touchDelegate.view.getGlobalVisibleRect(rect)
+        return mScreenSize.intersect(rect)
     }
 
     companion object {
