@@ -59,8 +59,7 @@ class TouchDelegateComposite(view: View, var checkVisibility: Boolean = true) : 
      */
     private fun checkVisibilityOf(touchDelegate: AbstractTouchDelegate): Boolean {
         val rect = Rect()
-        touchDelegate.view.getGlobalVisibleRect(rect)
-        return mScreenSize.intersects(rect)
+        return touchDelegate.view.getGlobalVisibleRect(rect) && mScreenSize.intersects(rect)
     }
 
     companion object {
