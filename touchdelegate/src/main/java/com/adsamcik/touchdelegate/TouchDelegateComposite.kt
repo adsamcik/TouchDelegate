@@ -44,7 +44,7 @@ class TouchDelegateComposite(view: View, var checkVisibility: Boolean = true) : 
 
         delegates.sortByDescending { it.view.translationZ }
         delegates.forEach {
-            if (it.view.visibility != View.VISIBLE && (!checkVisibility || checkVisibilityOf(it))) {
+            if (it.view.visibility == View.VISIBLE && (!checkVisibility || checkVisibilityOf(it))) {
                 event.setLocation(x, y)
                 if (it.onTouchEvent(event))
                     return true
@@ -59,7 +59,8 @@ class TouchDelegateComposite(view: View, var checkVisibility: Boolean = true) : 
      */
     private fun checkVisibilityOf(touchDelegate: AbstractTouchDelegate): Boolean {
         val rect = Rect()
-        return touchDelegate.view.getGlobalVisibleRect(rect) && mScreenSize.intersects(rect)
+        val result = touchDelegate.view.getGlobalVisibleRect(rect)
+        return result && mScreenSize.intersects(rect)
     }
 
     companion object {
