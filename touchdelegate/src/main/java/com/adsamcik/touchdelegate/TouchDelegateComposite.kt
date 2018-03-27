@@ -44,7 +44,7 @@ class TouchDelegateComposite(view: View, var checkVisibility: Boolean = true) : 
 
         delegates.sortByDescending { it.view.translationZ }
         delegates.forEach {
-            if (!checkVisibility || checkVisibilityOf(it)) {
+            if (it.view.visibility != View.VISIBLE && (!checkVisibility || checkVisibilityOf(it))) {
                 event.setLocation(x, y)
                 if (it.onTouchEvent(event))
                     return true
