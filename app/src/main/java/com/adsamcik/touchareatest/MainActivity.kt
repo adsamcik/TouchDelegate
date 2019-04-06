@@ -15,19 +15,22 @@ class MainActivity : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
+		//Set how far will the delegate extend touch on each side
 		val rect = Rect(64.dpToPx(), 32.dpToPx(), 0, 32.dpToPx())
+
+		//Add delegate to view
 		TouchDelegateComposite.addTouchDelegate(DraggableTouchDelegate(rect, extended_button))
-		val dialog = AlertDialog.Builder(this).setMessage("Clicked").create()
 		extended_button.setOnClickListener {
-			dialog.show()
+			AlertDialog.Builder(this).setMessage("Clicked extended").show()
 		}
 
 		TouchDelegateComposite.addTouchDelegate(DraggableTouchDelegate(rect, obscured_view))
 		obscured_view.setOnClickListener {
-			dialog.show()
+			AlertDialog.Builder(this).setMessage("Clicked obscured").show()
 		}
 
-		obscuring_view.setOnClickListener {
-		}
+		//For now only views that are not drawn are detected by visibility check. Other views must be obscured like this
+		TouchDelegateComposite.addTouchDelegate(DraggableTouchDelegate(rect, obscuring_view))
+		obscuring_view.setOnClickListener {}
 	}
 }
