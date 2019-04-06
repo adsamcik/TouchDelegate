@@ -8,18 +8,23 @@ import android.view.View
  * This class allows for better overloading of TouchDelegate for TouchDelegateComposite
  * without the need for unnecessary payload that TouchDelegate brings
  */
-abstract class AbstractTouchDelegate {
-    /**
-     * View that is needed for sorting purposes
-     */
-    abstract val view: View
+interface AbstractTouchDelegate {
+	/**
+	 * View that is needed for sorting purposes
+	 */
+	val view: View
 
-    /**
-     * Touch event that is called
-     *
-     * @param event Event
-     *
-     * @return true if the event should not propagate any further
-     */
-    abstract fun onTouchEvent(event: MotionEvent): Boolean
+	/**
+	 * Parent view is required so TouchDelegateComposite can be added to it
+	 */
+	val parentView: View
+
+	/**
+	 * Touch event that is called
+	 *
+	 * @param event Event
+	 *
+	 * @return true if the event should not propagate any further
+	 */
+	fun onTouchEvent(event: MotionEvent): Boolean
 }

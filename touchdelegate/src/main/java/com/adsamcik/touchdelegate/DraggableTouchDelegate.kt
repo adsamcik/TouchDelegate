@@ -7,7 +7,7 @@ import android.view.View
 /**
  * Touch delegate that can handle dragging/translation
  */
-class DraggableTouchDelegate(private val mOffsetRect: Rect, override val view: View) : AbstractTouchDelegate() {
+class DraggableTouchDelegate(private val mOffsetRect: Rect, override val view: View, override val parentView: View = view.parent as View) : AbstractTouchDelegate {
 	/**
 	 * If true all move events and up event are sent to the view
 	 * If false no move event or up event is sent to view
