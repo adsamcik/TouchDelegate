@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.2.1] - 16-02-2021
+## [1.3.1] - 16-02-2021
 
 - Updated dependencies
 - Updated API target to 30
