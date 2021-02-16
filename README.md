@@ -1,6 +1,6 @@
 ![Build Status](https://github.com/adsamcik/TouchDelegate/workflows/Android%20CI/badge.svg)
-[ ![Download](https://api.bintray.com/packages/adsamcik/android-components/touchdelegate/images/download.svg) ](https://bintray.com/adsamcik/android-components/touchdelegate/_latestVersion)
  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/83d4943b78f9471da050855fca3fe347)](https://www.codacy.com/app/adsamcik/TouchDelegate?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=adsamcik/TouchDelegate&amp;utm_campaign=Badge_Grade)
+ [![](https://jitpack.io/v/adsamcik/TouchDelegate.svg)](https://jitpack.io/#adsamcik/TouchDelegate)
 
 # TouchDelegate
 Touch delegate builds on Android's built in TouchDelegate. TouchDelegate has several limitations and issues. 
