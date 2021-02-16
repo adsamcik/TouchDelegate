@@ -7,7 +7,8 @@ import android.view.View
 /**
  * Touch delegate that can handle dragging/translation
  */
-class DraggableTouchDelegate(private val mOffsetRect: Rect, override val view: View) : AbstractTouchDelegate {
+class DraggableTouchDelegate(private val mOffsetRect: Rect, override val view: View) :
+		AbstractTouchDelegate {
 	override val parentView: View = view.parent as? View
 			?: throw ExceptionInInitializerError("View does not have a parent, it cannot be rootview!")
 
@@ -27,7 +28,10 @@ class DraggableTouchDelegate(private val mOffsetRect: Rect, override val view: V
 		get() {
 			val tX = view.x.toInt()
 			val tY = view.y.toInt()
-			return Rect(tX - mOffsetRect.left, tY - mOffsetRect.top, tX + view.width + mOffsetRect.right, tY + view.height + mOffsetRect.bottom)
+			return Rect(tX - mOffsetRect.left,
+			            tY - mOffsetRect.top,
+			            tX + view.width + mOffsetRect.right,
+			            tY + view.height + mOffsetRect.bottom)
 		}
 
 	/**
