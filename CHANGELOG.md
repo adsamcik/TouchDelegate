@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.2.1] - 16-02-2021
+
+- Updated dependencies
+- Updated API target to 30
+
 ## [1.2.0] - 06-04-2019
 
 * Refactored to AndroidX
